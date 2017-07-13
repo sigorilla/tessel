@@ -1,0 +1,3 @@
+app/
+node_modules/justgage/*js
+node_modules/socket.io-client/dist/socket.io.js

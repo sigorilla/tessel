@@ -1,0 +1,29 @@
+{
+    "name": "tessel",
+    "version": "0.0.1",
+    "description": "Tessel project",
+    "main": "example/index.js",
+    "dependencies": {
+        "debug": "2.6.8",
+        "express": "4.15.3",
+        "johnny-five": "0.11.3",
+        "justgage": "1.2.2",
+        "socket.io": "2.0.3",
+        "t2-cli": "0.1.5",
+        "tessel-io": "1.0.0"
+    },
+    "devDependencies": {
+        "eslint": "4.2.0",
+        "eslint-config-loris": "7.0.0"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "try": "DEBUG=j5:* t2 run"
+    },
+    "repository": "",
+    "keywords": [
+        "Tessel"
+    ],
+    "license": "MIT",
+    "readme": "A bare bones Tessel 2 blinky script."
+}
