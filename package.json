@@ -20,7 +20,7 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "try": "DEBUG=j5:* t2 run"
     },
-    "repository": "",
+    "repository": "https://github.com/sigorilla/tessel.git",
     "keywords": [
         "Tessel"
     ],
