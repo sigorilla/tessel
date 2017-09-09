@@ -1,3 +1,7 @@
+'use strict';
+
+/* eslint-env browser */
+/* global io, JustGage */
 window.onload = () => {
     const socket = io();
     const monitor = {};
