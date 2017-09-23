@@ -10,5 +10,12 @@ module.exports = {
         camelcase: ['error', {properties: 'never'}],
         indent: ['error', 4, {SwitchCase: 1, MemberExpression: 1}],
         'no-empty': ['error', {allowEmptyCatch: true}],
-    }
+    },
+    overrides: [{
+        files: 'client/*',
+        globals: {
+            window: true,
+            io: true
+        }
+    }]
 };

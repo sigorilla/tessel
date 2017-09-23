@@ -13,6 +13,14 @@
 npm run try -- example/sensor.js
 ```
 
+### Remote control via socket.io
+
+```sh
+t2 ap -n <SSID_NAME>
+# Connect to http://<tessel_name>.local/
+t2 run server/index.js
+```
+
 ## Auth
 
 ```sh

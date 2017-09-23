@@ -7,7 +7,6 @@
     "debug": "2.6.8",
     "express": "4.15.3",
     "johnny-five": "0.11.3",
-    "justgage": "1.2.2",
     "socket.io": "2.0.3",
     "tessel-io": "1.0.0"
   },

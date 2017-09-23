@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tessel 2</title>
+    <link href="main.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="body">
+        <fieldset>
+            <legend>Установить настройки моторов</legend>
+            <p>
+                <label>
+                    Speed:
+                    <input type="number" name="speed" id="speed" value="0" />
+                </label>
+            </p>
+
+            <p>
+                <label>
+                    Direction:
+                    <select name="direction" id="direction">
+                        <option value="forward" selected>forward</option>
+                        <option value="reverse">reverse</option>
+                    </select>
+                </label>
+            </p>
+
+            <p>
+                <button type="button" id="start">Start</button>
+                <button type="button" id="stop">Stop</button>
+            </p>
+        </fieldset>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/main.js"></script>
+</body>
+</html>
