@@ -20,8 +20,16 @@ window.onload = () => {
     stop.addEventListener('click', () => {
         socket.emit('stop');
     });
+
+    window.addEventListener('deviceorientation', (e) => {
+        socket.emit('change speed', Number(getSpeed(e.beta)));
+    });
 };
 
 function find(sel) {
     return window.document.querySelector(sel);
+}
+
+function getSpeed(beta) {
+    return Math.round(beta * -255 / 90) + 255;
 }
