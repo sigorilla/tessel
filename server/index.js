@@ -49,6 +49,17 @@ function onReady() {
                     break;
             }
         });
+
+        socket.on('move', ({speed, rotateDir, rotateK}) => {
+            const isLeft = rotateDir === 1;
+            const rotateSpeed = rotateK * speed;
+            [
+                isLeft ? rotateSpeed : speed,
+                !isLeft ? rotateSpeed : speed
+            ].forEach((speed, index) => {
+                motors[index].speed(speed);
+            });
+        });
     });
 
     server.listen(PORT, () => {
