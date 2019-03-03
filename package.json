@@ -4,11 +4,12 @@
   "description": "Tessel project",
   "main": "example/index.js",
   "dependencies": {
+    "date-fns": "1.30.1",
     "debug": "2.6.8",
     "express": "4.15.3",
-    "johnny-five": "0.11.3",
+    "johnny-five": "1.0.0",
     "socket.io": "2.0.3",
-    "tessel-io": "1.0.0"
+    "tessel-io": "1.2.0"
   },
   "devDependencies": {
     "eslint": "4.6.1",
