@@ -12,10 +12,17 @@ module.exports = {
         'no-empty': ['error', {allowEmptyCatch: true}],
     },
     overrides: [{
-        files: 'client/*',
+        files: 'client/**/*.js',
+        env: {
+            node: false,
+            browser: true
+        },
         globals: {
-            window: true,
-            io: true
+            io: true,
+            JustGage: true
+        },
+        rules: {
+            strict: false
         }
     }]
 };

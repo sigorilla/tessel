@@ -1,17 +1,15 @@
 'use strict';
 
 const os = require('os');
-
 const {Motors} = require('johnny-five');
-
 const SocketIO = require('socket.io');
-
-require('../lib/board')(onReady);
 
 const server = require('../lib/server');
 const io = new SocketIO(server);
 
 const PORT = 80;
+
+require('../lib/board')(onReady);
 
 function onReady() {
     const clients = new Set();

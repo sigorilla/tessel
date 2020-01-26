@@ -23,6 +23,7 @@ t2 run server/<PROJECT>/index.js
 
 Available projects:
 - `motors` — control servo via socket.io.
+- `monitor` — BME-280.s
 
 ### Deploy
 

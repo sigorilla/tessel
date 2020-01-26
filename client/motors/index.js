@@ -1,6 +1,10 @@
 'use strict';
 
 window.onload = () => {
+    function find(sel) {
+        return window.document.querySelector(sel);
+    }
+
     const socket = io();
 
     const speed = find('#speed');
@@ -21,7 +25,3 @@ window.onload = () => {
         socket.emit('stop');
     });
 };
-
-function find(sel) {
-    return window.document.querySelector(sel);
-}
