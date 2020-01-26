@@ -6,9 +6,9 @@ const {Motors} = require('johnny-five');
 
 const SocketIO = require('socket.io');
 
-require('./board')(onReady);
+require('../lib/board')(onReady);
 
-const server = require('./server');
+const server = require('../lib/server');
 const io = new SocketIO(server);
 
 const PORT = 80;

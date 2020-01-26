@@ -8,8 +8,8 @@ const express = require('express');
 const app = express();
 const server = new http.Server(app);
 
-const assetsPath = path.join(__dirname, '../client');
-const vendorPath = path.join(__dirname, '../node_modules');
+const assetsPath = path.join(__dirname, '../../client');
+const vendorPath = path.join(__dirname, '../../node_modules');
 
 app
     .use(express.static(assetsPath))

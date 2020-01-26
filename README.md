@@ -13,16 +13,25 @@
 npm run try -- example/sensor.js
 ```
 
-### Remote control via socket.io
+## Projects
 
 ```sh
 t2 ap -n <SSID_NAME>
-# Connect to http://<tessel_name>.local/
-t2 run server/index.js
+t2 run server/<PROJECT>/index.js
+# Connect to http://<tessel_name>.local/<PROJECT>/
+```
+
+Available projects:
+- `motors` — control servo via socket.io.
+
+### Deploy
+
+```
+t2 push server/<PROJECT>/index.js
 ```
 
 ## Auth
 
 ```sh
-t2 ap -n CodeTessel -p IHeartTessel
+t2 ap -n <SSID> -p <PASS>
 ```
