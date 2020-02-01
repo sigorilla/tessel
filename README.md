@@ -1,5 +1,7 @@
 # tessel-2
 
+Node: 8.11.3
+
 ## Examples
 
 * [without j5 lib](./examples/index.js)
