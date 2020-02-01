@@ -15,7 +15,7 @@ require('../lib/board')(onReady);
 function onReady() {
     const clients = new Set();
 
-    // I2C: GND, VCC, SCL (A0/B0), SDA (A1/B1).
+    // I2C: GND, VCC (3.3V), SCL (A0), SDA (A1).
     const monitor = new Multi({
         controller: 'BME280',
         // http://johnny-five.io/api/altimeter/
@@ -24,7 +24,7 @@ function onReady() {
     });
     let updated = Date.now() - DELAY;
 
-    monitor.on('change', () => {
+    monitor.on('data', () => {
         const now = Date.now();
         if (now - updated < DELAY) {
             return;

@@ -6,7 +6,7 @@ window.onload = () => {
     const monitors = {
         thermometer: new JustGage({
             id: 'thermometer',
-            value: null,
+            value: 0,
             min: 0,
             max: 100,
             textRenderer: (value) => `${value}℃`,
@@ -15,7 +15,7 @@ window.onload = () => {
         }),
         barometer: new JustGage({
             id: 'barometer',
-            value: null,
+            value: 0,
             min: 0,
             max: 100,
             textRenderer: (value) => `${value}%`,
@@ -24,7 +24,7 @@ window.onload = () => {
         }),
         hydrometer: new JustGage({
             id: 'hydrometer',
-            value: null,
+            value: 0,
             min: 0,
             max: 100,
             textRenderer: (value) => `${value}%`,
@@ -33,7 +33,7 @@ window.onload = () => {
         }),
         altimeter: new JustGage({
             id: 'altimeter',
-            value: null,
+            value: 0,
             min: 0,
             max: 200,
             textRenderer: (value) => `${value} m`,
