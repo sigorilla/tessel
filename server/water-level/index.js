@@ -5,54 +5,64 @@ require('dotenv').config({
 });
 
 const os = require('os');
-const {Sensor} = require('johnny-five');
+const {Sensor, Led} = require('johnny-five');
 const SocketIO = require('socket.io');
+const {throttle} = require('throttle-debounce');
 
 const server = require('../lib/server');
 const IFTTTMaker = require('../lib/ifttt-maker');
+const COLORS = require('./colors');
 
 const io = new SocketIO(server);
 
 const PORT = 80;
-const SOCKET_DELAY = 5000;
+const MAX_VALUE = 500;
+const NOTIFY_THRESHOLD = MAX_VALUE / 2;
+const NOTIFY_DELAY = 5000;
 
 const ifttt = new IFTTTMaker({
     token: process.env.IFTTT_TOKEN
+});
+
+const notify = throttle(NOTIFY_DELAY, (value) => {
+    ifttt.send('need_water', {value1: 'Plant', value2: String(value || 0)});
 });
 
 console.log('Script is running. Now waiting for board ready...');
 require('../lib/board')(onReady);
 
 function onReady() {
-    console.log('Board is ready.');
+    console.log('Board is ready!');
 
-    const clients = new Set();
-
-    const sensor = new Sensor('a7');
-
-    let updated = Date.now() - SOCKET_DELAY;
-
-    sensor.on('change', () => {
-        const now = Date.now();
-        if (now - updated < SOCKET_DELAY || sensor.value === null) {
-            return;
+    // http://johnny-five.io/api/sensor/
+    const sensor = new Sensor({
+        pin: 'b7',
+        threshold: 30
+    });
+    // http://johnny-five.io/api/led.rgb/
+    const led = new Led.RGB({
+        pins: {
+            red: 'a5',
+            green: 'a6',
+            blue: 'b5'
         }
-
-        updated = now;
-
-        // console.log(sensor.analog, sensor.value);
-        io.sockets.emit('report', {
-            analog: sensor.analog,
-            value: sensor.value
-        });
-        // TODO: Change delay
-        ifttt.send('need_water', {value1: 'Plant', value2: sensor.value});
     });
 
-    io.on('connection', (socket) => {
-        if (clients.size < 15) {
-            clients.add(socket);
-            socket.on('disconnect', () => clients.delete(socket));
+    sensor.on('change', () => {
+        const colors = COLORS.slice().sort(() => Math.random() - 0.5);
+        const colorIndex = sensor.scaleTo(0, colors.length - 1);
+        const color = colors[colorIndex];
+        led.color(color).intensity(30);
+
+        const value = sensor.scaleTo(0, MAX_VALUE);
+        io.sockets.emit('report', {
+            color,
+            value,
+            percent: value * 100 / MAX_VALUE
+        });
+
+        if (value < NOTIFY_THRESHOLD) {
+            notify(value);
         }
     });
 
