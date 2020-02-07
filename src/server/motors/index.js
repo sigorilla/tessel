@@ -50,7 +50,7 @@ function onReady() {
     });
 
     server.listen(PORT, () => {
-        console.log(`Server started, go to http://${os.hostname()}`);
+        console.log(`Server started, go to http://${os.hostname()}/motors/`);
     });
 
     process.on('SIGINT', () => server.close());

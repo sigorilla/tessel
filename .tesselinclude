@@ -1,5 +1,4 @@
 .env
-server/
-client/
+src/
 node_modules/socket.io-client/dist/socket.io.js
 node_modules/justgage/*js

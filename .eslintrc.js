@@ -12,7 +12,7 @@ module.exports = {
         'no-empty': ['error', {allowEmptyCatch: true}],
     },
     overrides: [{
-        files: 'client/**/*.js',
+        files: 'src/client/**/*.js',
         env: {
             node: false,
             browser: true

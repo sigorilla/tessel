@@ -20,6 +20,7 @@ const MAX_VALUE = 500;
 const NOTIFY_THRESHOLD = MAX_VALUE / 2;
 const NOTIFY_DELAY = 5000;
 
+// https://ifttt.com/maker_webhooks
 const ifttt = new IFTTTMaker({
     token: process.env.IFTTT_TOKEN
 });
@@ -67,7 +68,7 @@ function onReady() {
     });
 
     server.listen(PORT, () => {
-        console.log(`Server started, go to http://${os.hostname()}`);
+        console.log(`Server started, go to http://${os.hostname()}/water-level/`);
     });
 
     process.on('SIGINT', () => server.close());

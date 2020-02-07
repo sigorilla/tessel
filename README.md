@@ -2,35 +2,28 @@
 
 Node: 8.11.3
 
-## Examples
-
-* [without j5 lib](./examples/index.js)
-* [j5 leds blinking](./example/led-blink.js)
-* [j5 sensor](./example/sensor.js)
-* [j5 button](./example/button.js)
-
 ### Try example
 
 ```sh
-npm run try -- example/sensor.js
+npm run try -- example/index.js
 ```
 
 ## Projects
 
 ```sh
 t2 ap -n <SSID_NAME>
-t2 run server/<PROJECT>/index.js
-# Connect to http://<tessel_name>.local/<PROJECT>/
+t2 run src/server/<PROJECT>/index.js
+# Connect to http://<tessel_name>/<PROJECT>/
 ```
 
 Available projects:
 - `motors` — control servo via socket.io.
-- `monitor` — BME-280.s
+- `monitor` — BME-280.
 
 ### Deploy
 
-```
-t2 push server/<PROJECT>/index.js
+```sh
+npx t2 push src/server/<PROJECT>/index.js
 ```
 
 ## Auth
